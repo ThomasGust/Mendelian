@@ -11,10 +11,10 @@ class Gene:
         self.allele = [a.lower(), a.upper()]
 
         assert type(g) == list and len(g) == 2
-        self.genotype = g
+        self.g = g
 
-        self.a1 = self.allele[self.genotype[0]]
-        self.a2 = self.allele[self.genotype[1]]
+        self.a1 = self.allele[self.g[0]]
+        self.a2 = self.allele[self.g[1]]
 
         self.alleles = [self.a1, self.a2]
 
@@ -40,8 +40,8 @@ class Organism:
         new_genes = []
         for gp in gene_pairs:
             assert gp[0].character == gp[1].character
-            sa = random.choice(gp[0].genotype)
-            ma = random.choice(gp[1].genotype)
+            sa = random.choice(gp[0].g)
+            ma = random.choice(gp[1].g)
 
             new_gene = Gene(gp[0].character, [sa, ma])
             new_genes.append(new_gene)
