@@ -49,7 +49,7 @@ class Organism:
 
         return product
     
-    def compute_punnet_square(self, mate):
+    def compute_full_punnet_square(self, mate):
         assert len(self.genes) == len(mate.genes)
 
         punnet_square = np.zeros()
