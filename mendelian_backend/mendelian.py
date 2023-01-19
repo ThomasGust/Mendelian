@@ -71,8 +71,6 @@ class Environment:
                 organism_genes.append(Gene(g, [random.choice([0, 1]), random.choice([0, 1])]))
             
             self.organisms.append(Organism(self.species_name, genes=organism_genes))
-
-        self.step()
     def random_pairs(self, ls):
         return [ls[i] for i in random.sample(range(len(ls)), 2)] 
 
@@ -82,12 +80,19 @@ class Environment:
         new_organisms = []
 
         for op in organism_pairs:
-            new_organism = op[0].breed(op[1])
-            new_organisms.append(new_organism)
-            print(new_organism.string_alleles())
+            new_organism1 = op[0].breed(op[1])
+            new_organisms.append(new_organism1)
+            new_organism2 = op[0].breed(op[1])
+            new_organisms.append(new_organism2)
         
         self.organisms = new_organisms
 
+        print(len(self.organisms))
+    
+    def simulate(self, epochs):
+        for e in range(epochs):
+            print(e)
+            self.step()
 
 if __name__ == "__main__":
     environment = Environment('Human')
