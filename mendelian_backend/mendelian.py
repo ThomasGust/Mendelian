@@ -54,6 +54,12 @@ class Organism:
         assert len(self.genes) == len(mate.genes)
 
         punnet_square = np.zeros((math.pow(len(self.genes), 2), math.pow(len(mate.genes), 2)))
+       
+    def compute_punnet_square(self, mate, gene_indices):
+        assert len(self.genes) == len(mate.genes)
+        ogenes = self.genes[gene_indices]
+        mgenes = mate.genes[gene_indices]
+        
         
 
     
