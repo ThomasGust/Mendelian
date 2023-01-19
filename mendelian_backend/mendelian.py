@@ -1,4 +1,5 @@
 import random
+import string
 
 class Gene:
 
@@ -17,6 +18,9 @@ class Gene:
 
         self.j = f"{self.a1}{self.a2}"
 
+        self.ci_dict = {self.allele[0]:0, self.allele[1]:1}
+        self.ic_dict = {0:self.allele[0], 1:self.allele[1]}
+
 
 class Organism:
 
@@ -33,6 +37,7 @@ class Organism:
 
         new_genes = []
         for gp in gene_pairs:
+            assert gp[0].character == gp[1].character
             sa = random.choice(gp[0].genotype)
             ma = random.choice(gp[1].genotype)
 
@@ -43,13 +48,25 @@ class Organism:
 
         return product
 
+class Environment:
+
+
+    def __init__(self, species_name, genes=string.ascii_lowercase, population_size=100):
+        self.species_name = species_name
+        self.population_size = population_size
+
+
 
 if __name__ == "__main__":
-    gene = Gene('a', [1, 0])
+    mg1 = Gene('a', [1, 0])
+    mg2 = Gene('b', [0, 0])
+
+    fg1 = Gene('a', [1, 1])
+    fg2 = Gene('b', [0, 1])
     
-    m = Organism("bob", [gene])
-    f = Organism("sarah", [gene])
+    m = Organism("bob", [mg1, mg2])
+    f = Organism("sarah", [fg1, fg2])
 
     res = m.breed(f)
 
-    print(res.genes[0].genotype)
+    print(res.genes[0].genotype, res.genes[1].genotype)
