@@ -1,5 +1,6 @@
 import random
 import string
+import numpy as np
 
 class Gene:
 
@@ -47,6 +48,12 @@ class Organism:
         product = Organism(f"Child-{self.name}-{mate.name}", new_genes)
 
         return product
+    
+    def compute_punnet_square(self, mate):
+        assert len(self.genes) == len(mate.genes)
+
+        punnet_square = np.zeros()
+
     
     def string_alleles(self):
 
