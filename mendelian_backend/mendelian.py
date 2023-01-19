@@ -1,6 +1,7 @@
 import random
 import string
 import numpy as np
+import math
 
 class Gene:
 
@@ -52,7 +53,8 @@ class Organism:
     def compute_full_punnet_square(self, mate):
         assert len(self.genes) == len(mate.genes)
 
-        punnet_square = np.zeros()
+        punnet_square = np.zeros((math.pow(len(self.genes), 2), math.pow(len(mate.genes), 2)))
+        
 
     
     def string_alleles(self):
