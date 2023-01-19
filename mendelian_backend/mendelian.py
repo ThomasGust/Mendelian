@@ -60,7 +60,9 @@ class Organism:
         ogenes = self.genes[gene_indices]
         mgenes = mate.genes[gene_indices]
         
+        genome_length = len(ogenes)
         
+        punnet_square = np.zeros((math.pow(genome_length, 2), math.pow(genome_length, 2)))
 
     
     def string_alleles(self):
