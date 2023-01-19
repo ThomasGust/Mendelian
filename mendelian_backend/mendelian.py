@@ -49,15 +49,25 @@ class Organism:
         return product
 
 class Environment:
-
-
-    def __init__(self, species_name, genes=string.ascii_lowercase, population_size=100):
+    def __init__(self, species_name, genes=list(string.ascii_lowercase), population_size=100):
         self.species_name = species_name
         self.population_size = population_size
+        self.genes = genes
 
+        self.organisms = []
+
+        for _ in range(self.population_size):
+            organism_genes = []
+            for g in self.genes:
+                organism_genes.append(Gene(g, [random.choice([0, 1]), random.choice([0, 1])]))
+            
+            self.organisms.append(Organism(self.species_name, genes=organism_genes))
+        
+        print(self.organisms[0].genes[0].j)
 
 
 if __name__ == "__main__":
+    """
     mg1 = Gene('a', [1, 0])
     mg2 = Gene('b', [0, 0])
 
@@ -70,3 +80,6 @@ if __name__ == "__main__":
     res = m.breed(f)
 
     print(res.genes[0].genotype, res.genes[1].genotype)
+    """
+
+    environment = Environment('Human')
