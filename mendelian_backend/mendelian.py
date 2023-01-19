@@ -47,6 +47,15 @@ class Organism:
         product = Organism(f"Child-{self.name}-{mate.name}", new_genes)
 
         return product
+    
+    def string_alleles(self):
+
+        string_alleles = ""
+
+        for gene in self.genes:
+            string_alleles += gene.j
+        
+        return string_alleles
 
 class Environment:
     def __init__(self, species_name, genes=list(string.ascii_lowercase), population_size=100):
@@ -62,24 +71,23 @@ class Environment:
                 organism_genes.append(Gene(g, [random.choice([0, 1]), random.choice([0, 1])]))
             
             self.organisms.append(Organism(self.species_name, genes=organism_genes))
+
+        self.step()
+    def random_pairs(self, ls):
+        return [ls[i] for i in random.sample(range(len(ls)), 2)] 
+
+    def step(self):
+        organism_pairs = [self.random_pairs(self.organisms) for i in range(len(self.organisms)//2)]
+
+        new_organisms = []
+
+        for op in organism_pairs:
+            new_organism = op[0].breed(op[1])
+            new_organisms.append(new_organism)
+            print(new_organism.string_alleles())
         
-        print(self.organisms[0].genes[0].j)
+        self.organisms = new_organisms
 
 
 if __name__ == "__main__":
-    """
-    mg1 = Gene('a', [1, 0])
-    mg2 = Gene('b', [0, 0])
-
-    fg1 = Gene('a', [1, 1])
-    fg2 = Gene('b', [0, 1])
-    
-    m = Organism("bob", [mg1, mg2])
-    f = Organism("sarah", [fg1, fg2])
-
-    res = m.breed(f)
-
-    print(res.genes[0].genotype, res.genes[1].genotype)
-    """
-
     environment = Environment('Human')
