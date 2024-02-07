@@ -1,2 +1,2 @@
 # Mendelian
-A set of modules for simple mendelian genetic simulation. Developed as extra work for my 8th grade science class.
+A module for very simple mendelian genetic simulation. In 8th grade science class, our teacher had us do a project where we would draw a "monster" (organism) with 13 different genes. We would then need to breed our monsters with our classmates and figure out the offspring they would produce. I wrote this project that day as a fun bit of extra work and did a little show and tell with the class. By this point, I'd already been interested in AI for a while, but this was (very loosely) my first exposure to conventional bioinformatics.
